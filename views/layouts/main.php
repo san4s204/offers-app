@@ -41,11 +41,10 @@ $this->registerCssFile('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest
-                ? ['label' => 'Login', 'url' => ['/site/login']]
-                : '<li class="nav-item">'
+            ['label' => 'Offers', 'url' => ['/offers1/index']], // Добавили ссылку на страницу Offers
+            // Убрали 'About', 'Contact' и 'Login'
+            !Yii::$app->user->isGuest
+                ? '<li class="nav-item">'
                     . Html::beginForm(['/site/logout'])
                     . Html::submitButton(
                         'Logout (' . Yii::$app->user->identity->username . ')',
@@ -53,7 +52,8 @@ $this->registerCssFile('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font
                     )
                     . Html::endForm()
                     . '</li>'
-        ]
+                : '',
+        ],
     ]);
     NavBar::end();
     ?>

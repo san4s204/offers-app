@@ -11,7 +11,7 @@ services:
       - '8000:80'
     environment:
       - DB_HOST=mysql
-      - DB_NAME=yii2db
+      - DB_NAME=offers_db
       - DB_USER=root
       - DB_PASSWORD=root
     depends_on:
@@ -29,13 +29,12 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: yii2db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: offers_db
     ports:
       - '3306:3306'
     volumes:
       - mysql-data:/var/lib/mysql
+      - ./offers_db.sql:/docker-entrypoint-initdb.d/offers_db.sql
 
   phpmyadmin:
     image: phpmyadmin:latest

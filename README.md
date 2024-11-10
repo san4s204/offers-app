@@ -21,7 +21,8 @@ cd offers-app
 
 ## Шаг 3: Запуск Docker-контейнеров
 
-Запустите проект с помощью Docker Compose:
+* Запустите Docker Desktop
+* Запустите проект с помощью Docker Compose:
 ```bash
 docker-compose up -d
 ```
